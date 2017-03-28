@@ -63,16 +63,21 @@ public abstract class DynamicActor extends Actor {
 		}
 	}
 
-	void bounceAt(Actor actor) {
+	boolean bounceAt(Actor actor) {
 		if (this.hitsTop(actor) && speed.y > 0) {
 			speed.y *= -1;
+			return true;
 		} else if (this.hitsBottom(actor) && speed.y < 0) {
 			speed.y *= -1;
+			return true;
 		} else if (this.hitsLeft(actor) && speed.x > 0) {
 			speed.x *= -1;
+			return true;
 		} else if (this.hitsRight(actor) && speed.x < 0) {
 			speed.x *= -1;
+			return true;
 		}
+		return false;
 	}
 
 	//----------------------------------------
